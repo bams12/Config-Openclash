@@ -107,14 +107,15 @@ dns:
 ipv6: false
 profile:
   store-selected: true
-rules:
 - RULE-SET,google-ads,REJECT
+- RULE-SET,light,REJECT
 - RULE-SET,ads,REJECT
 - RULE-SET,adaway,REJECT
+- RULE-SET,ads_traking,REJECT
 - RULE-SET,Umum,Umum
 - RULE-SET,Gaming,Gaming
 - IP-CIDR,198.18.0.1/16,REJECT,no-resolve
-- MATCH,GLOBAL
+- MATCH,GLOBAL,Umum
 rule-providers:
   Umum:
     type: file
@@ -136,6 +137,18 @@ rule-providers:
     type: file
     behavior: classical
     path: "./rule_provider/google_video_ads.yaml"
+  light:
+    type: file
+    behavior: classical
+    path: "./rule_provider/light.yaml"
+  facebook-extended:
+    type: file
+    behavior: classical
+    path: "./rule_provider/facebook-extended.yaml"
+  ads_traking:
+    type: file
+    behavior: classical
+    path: "./rule_provider/ads_traking.yaml"
 tproxy-port: 7895
 tun:
   enable: true
