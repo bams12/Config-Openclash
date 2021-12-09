@@ -3691,7 +3691,6 @@ payload:
   - DOMAIN-SUFFIX,go-mpulse.net
   - DOMAIN-SUFFIX,good.ta80.com
   - DOMAIN-SUFFIX,googlecommerce.com
-  - DOMAIN-SUFFIX,googlesyndication.com
   - DOMAIN-SUFFIX,goolpter.com
   - DOMAIN-SUFFIX,gopig.io
   - DOMAIN-SUFFIX,gorgon.youdao.com
@@ -6504,7 +6503,6 @@ payload:
   - DOMAIN-SUFFIX,sapi.sina.cn
   - DOMAIN-SUFFIX,savebt.net
   - DOMAIN-SUFFIX,saxxaz.taohuayuan8888.com
-  - DOMAIN-SUFFIX,sb.scorecardresearch.com
   - DOMAIN-SUFFIX,sb88b.com
   - DOMAIN-SUFFIX,sbeacon.sina.com.cn
   - DOMAIN-SUFFIX,sbrqp.com
@@ -6808,7 +6806,7 @@ payload:
   - DOMAIN-SUFFIX,ssh.yezijizhang.com
   - DOMAIN-SUFFIX,ssjpx.com
   - DOMAIN-SUFFIX,ssjy168.com
-  - DOMAIN-SUFFIX,ssl.google-analytics.com
+  
   - DOMAIN-SUFFIX,ssl.hyhzy.cn
   - DOMAIN-SUFFIX,ssl.ymapp.com
   - DOMAIN-SUFFIX,ssl-cdn.media.innity.net
