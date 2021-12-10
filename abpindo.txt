@@ -3,9 +3,9 @@
 #! Title: ABPindo
 #! Description: Filter tambahan untuk EasyList memblokir iklan berbahasa Indonesia dan Malaysia.
 payload:
-  - '+.05ee3a24ed11df058c8.com^$popup,third-party"
-  - '+.108.168.231.179^$popup,third-party"
-  - '+.188affiliates.com^$third-party"
+  - '+.05ee3a24ed11df058c8.com^$popup,third-party'
+  - '+.108.168.231.179^$popup,third-party'
+  - '+.188affiliates.com^$third-party'
   - '+.1b969cef84d93b43.com^
   - '+.2go7v1nes8.com^
   - '+.34667c8ece5.com^
