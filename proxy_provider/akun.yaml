@@ -1,0 +1,10 @@
+proxies:
+- name: TROJAN 1
+  type: trojan
+  server: SEVER
+  port: 443
+  password: 4e5ac940-3a4c-
+  udp: true
+  sni: yandex.com
+  skip-cert-verify: true
+  

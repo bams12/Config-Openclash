@@ -1,0 +1,34 @@
+proxies:
+- name: "SG-GRPC"
+  type: vmess
+  server: SERVER
+  port: 443
+  uuid: 250df045-c1bb
+  alterId: 2
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: YANDEX>COM
+  network: grpc
+  grpc-opts:
+    grpc-service-name: v2ray-vmess-grpc
+
+- name: "sshkit"
+  type: vmess
+  server: id-lb.sshkit.org
+  port: 443
+  uuid: 6fea1649-425b-4092-bf5
+  alterId: 2
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: YANDEX>COM
+  network: ws
+  ws-opts:
+   path: /sshkit
+   headers: 
+     Host: YANDEX>COM
+   max-early-data: 2048
+   early-data-header-name: Sec-WebSocket-Protocol
