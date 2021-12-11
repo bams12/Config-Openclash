@@ -1,0 +1,225 @@
+payload:
+  #Deezer
+  - DOMAIN-SUFFIX,deezer.com
+  - DOMAIN-SUFFIX,dzcdn.net
+ #JOOX
+  - DOMAIN-SUFFIX,joox.com
+  - DOMAIN-KEYWORD,jooxweb-api
+
+  #  WHATSAPP
+  - DOMAIN-SUFFIX,g.whatsapp.net
+  - DOMAIN-SUFFIX,web.whatsapp.com
+  - DOMAIN-SUFFIX,scontent.whatsapp.net
+  - DOMAIN-SUFFIX,whatsapp.com
+  - DOMAIN-SUFFIX,static.whatsapp.net
+  - DOMAIN-SUFFIX,whatsapp.net
+
+ # Spotify
+  - DOMAIN-SUFFIX,audio-ak-spotify-com.akamaized.net
+  - DOMAIN-SUFFIX,byspotify.com
+  - DOMAIN-SUFFIX,heads4-ak-spotify-com.akamaized.net
+  - DOMAIN-SUFFIX,pscdn.co
+  - DOMAIN-SUFFIX,scdn.co #Domain streaming
+  - DOMAIN-SUFFIX,spoti.fi
+  - DOMAIN-SUFFIX,spotify-com.akamaized.net
+  - DOMAIN-SUFFIX,spotify-everywhere.com
+  - DOMAIN-SUFFIX,spotify.com
+  - DOMAIN-SUFFIX,spotify.design
+  - DOMAIN-SUFFIX,spotifycdn.com
+  - DOMAIN-SUFFIX,spotifycdn.net
+  - DOMAIN-SUFFIX,spotifycharts.com
+  - DOMAIN-SUFFIX,spotifycodes.com
+  - DOMAIN-SUFFIX,spotifyforbrands.com
+  - DOMAIN-SUFFIX,spotifyjobs.com
+  - DOMAIN-KEYWORD,-spotify-com
+  - DOMAIN-KEYWORD,spotify.com
+ #Smule
+  - DOMAIN-SUFFIX,smule.com
+ #Langit Musik
+  - DOMAIN-SUFFIX,langitmusik.co.id #Domain Streaming
+
+#TikTok
+  - DOMAIN-SUFFIX,tiktokcdn.com #Domain Streaming
+  - DOMAIN-SUFFIX,abtest-sg-tiktok.byteoversea.com
+  - DOMAIN-SUFFIX,abtest-va-tiktok.byteoversea.com
+  - DOMAIN-SUFFIX,isnssdk.com
+  - DOMAIN-SUFFIX,lf1-ttcdn-tos.pstatp.com
+  - DOMAIN-SUFFIX,muscdn.com
+  - DOMAIN-SUFFIX,musemuse.cn
+  - DOMAIN-SUFFIX,musical.ly
+  - DOMAIN-SUFFIX,p1-tt-ipv6.byteimg.com
+  - DOMAIN-SUFFIX,p1-tt.byteimg.com
+  - DOMAIN-SUFFIX,p16-ad-sg.ibyteimg.com
+  - DOMAIN-SUFFIX,p16-tiktok-sg.ibyteimg.com
+  - DOMAIN-SUFFIX,p16-tiktok-sign-va-h2.ibyteimg.com
+  - DOMAIN-SUFFIX,p16-tiktok-va-h2.ibyteimg.com
+  - DOMAIN-SUFFIX,p16-tiktok-va.ibyteimg.com
+  - DOMAIN-SUFFIX,p16-va-tiktok.ibyteimg.com
+  - DOMAIN-SUFFIX,p26-tt.byteimg.com
+  - DOMAIN-SUFFIX,p3-tt-ipv6.byteimg.com
+  - DOMAIN-SUFFIX,p9-tt.byteimg.com
+  - DOMAIN-SUFFIX,quic-tiktok-core-proxy-i18n-gcpva.byteoversea.net
+  - DOMAIN-SUFFIX,quic-tiktok-proxy-i18n-gcpva.byteoversea.net
+  - DOMAIN-SUFFIX,sf1-ttcdn-tos.pstatp.com
+  - DOMAIN-SUFFIX,sf16-ttcdn-tos.ipstatp.com
+  - DOMAIN-SUFFIX,sf6-ttcdn-tos.pstatp.com
+  - DOMAIN-SUFFIX,sgsnssdk.com
+  - DOMAIN-SUFFIX,tiktok-lb-alisg.byteoversea.net
+  - DOMAIN-SUFFIX,tiktok-lb-maliva.byteoversea.net
+  - DOMAIN-SUFFIX,tiktok.com
+  - DOMAIN-SUFFIX,tiktokcdn-in.com
+  - DOMAIN-SUFFIX,tiktokcdn-us.com
+  - DOMAIN-SUFFIX,tiktokv.com
+  - DOMAIN-SUFFIX,ttlivecdn.com
+  - DOMAIN-SUFFIX,ttlivecdn.com.wsdvs.com
+  - DOMAIN-SUFFIX,ttoversea.net
+  #FREEFIRE
+  #- DOMAIN-SUFFIX,garenanow.com #Update In Game menggunakan Kuota Reguler, jadi dinonaktifkan
+  - DOMAIN-SUFFIX,avatargarenanow-a.akamaihd.net
+  - DOMAIN-SUFFIX,cdngarenanow-a.akamaihd.net
+  - DOMAIN-SUFFIX,dlmobilegarena-a.akamaihd.net
+  - DOMAIN-SUFFIX,seagroup.com
+  - DOMAIN-SUFFIX,ff.garena.com
+  - DOMAIN-SUFFIX,garena.com
+  - DOMAIN-SUFFIX,garena.co.th
+  - DOMAIN-SUFFIX,garena.live
+  - DOMAIN-SUFFIX,garena.my
+  - DOMAIN-SUFFIX,garena.ph
+  - DOMAIN-SUFFIX,garena.sg
+  - DOMAIN-SUFFIX,garena.tv
+  - DOMAIN-SUFFIX,garena.tw
+  - DOMAIN-SUFFIX,garena.vn
+  - DOMAIN-SUFFIX,freefiremobile.com
+  - DOMAIN-SUFFIX,fbsbx.com
+  - DOMAIN-SUFFIX,youme.im
+  #Real-time-battle
+  - DST-PORT,10011 
+  - DST-PORT,39698 
+  - DST-PORT,39800 
+  - IP-CIDR,124.158.134.0/24 
+  - IP-CIDR,143.92.120.0/24 
+  - IP-CIDR,148.153.172.0/24 
+  - IP-CIDR,148.153.175.0/24 
+  - IP-CIDR,164.52.109.0/24 
+
+ #MOBILE LEGENDS
+  #- DOMAIN-SUFFIX,youngjoygame.com #Update In Game menggunakan Kuota Reguler, jadi dinonaktifkan
+  - DOMAIN-SUFFIX,mobilelegends.com
+  - DOMAIN-SUFFIX,app.adjust.net.in
+  - DOMAIN-SUFFIX,app.adjust.com
+  - DOMAIN-SUFFIX,app.adjust.world
+  - DOMAIN-SUFFIX,ml.CS30.NET
+  - DOMAIN-SUFFIX,pv.sohu.com
+  - DOMAIN-SUFFIX,yuanzhanapp.com
+  - DOMAIN-SUFFIX,aihelp.net
+  #Real-time-battle
+  - DST-PORT,4003 
+  - DST-PORT,4004 
+  - DST-PORT,4014 
+  - DST-PORT,5001 
+  - DST-PORT,5002 
+  - DST-PORT,5003 
+  - DST-PORT,5004 
+  - DST-PORT,5005 
+  - DST-PORT,5006 
+  - DST-PORT,5007 
+  - DST-PORT,5008 
+  - DST-PORT,5013 
+  - DST-PORT,5014 
+  - DST-PORT,5021 
+  - DST-PORT,5023 
+  - DST-PORT,5052 
+  - DST-PORT,5053 
+  - DST-PORT,5055 
+  - DST-PORT,10003 
+  - DST-PORT,30021 
+  - DST-PORT,30190 
+  - DST-PORT,30220 
+  - IP-CIDR,8.214.32.0/24 
+  - IP-CIDR,23.248.168.0/21 
+  - IP-CIDR,34.101.143.0/24 
+  - IP-CIDR,101.78.11.0/24 
+  - IP-CIDR,103.16.137.0/24 
+  - IP-CIDR,103.96.77.0/24 
+  - IP-CIDR,103.104.168.250/24 
+  - IP-CIDR,103.104.168.0/24 
+  - IP-CIDR,103.152.14.0/24 
+  - IP-CIDR,107.155.39.0/24 
+  - IP-CIDR,119.81.0.0/17 
+  - IP-CIDR,128.1.87.0/24 
+  - IP-CIDR,129.227.0.0/16 
+  - IP-CIDR,159.122.133.0/24 
+  - IP-CIDR,161.202.192.0/18 
+  - IP-CIDR,164.52.0.0/17 
+  - IP-CIDR,168.1.193.0/24 
+  - IP-CIDR,169.46.132.0/24 
+  - IP-CIDR,169.56.0.0/16 
+  - IP-CIDR,185.23.183.0/24 
+  - IP-CIDR,192.169.113.0/24 
+  - IP-CIDR,193.118.34.0/24 
+
+ #ARENA OF VALOR
+  #- DOMAIN-SUFFIX,garenanow.com #Update In Game menggunakan Kuota Reguler, jadi dinonaktifkan
+  - DOMAIN-SUFFIX,garena.com
+  - DOMAIN-SUFFIX,garena.co.id
+  #Real-time-battle
+  - DST-PORT,3013 
+  - DST-PORT,8081 
+  - DST-PORT,8085 
+  - DST-PORT,10000 
+  - DST-PORT,10001 
+  - DST-PORT,10025 
+  - DST-PORT,10011 
+  - DST-PORT,10014 
+  - DST-PORT,10021 
+  - DST-PORT,10025 
+  - DST-PORT,10007 
+  - DST-PORT,10040 
+  - DST-PORT,10046 
+  - DST-PORT,10049 
+  - DST-PORT,10072 
+  - DST-PORT,10091 
+  - DST-PORT,18082 
+  - DST-PORT,20000 
+  - DST-PORT,20001 
+  - DST-PORT,20002 
+  - DST-PORT,40000 
+  - IP-CIDR,101.33.47.0/24 
+  - IP-CIDR,119.28.38.0/24 
+  - IP-CIDR,119.28.100.0/24 
+  - IP-CIDR,119.28.110.0/24 
+  - IP-CIDR,129.226.1.0/24 
+  - IP-CIDR,129.226.149.0/24 
+  - IP-CIDR,150.109.27.0/24 
+  - IP-CIDR,150.109.28.0/24 
+  - IP-CIDR,183.36.108.0/24 
+  - IP-CIDR,202.73.16.0/24 
+   #Line
+  - DOMAIN-KEYWORD,line-apps
+  - DOMAIN-SUFFIX,lin.ee
+  - DOMAIN-SUFFIX,line-cdn.net
+  - DOMAIN-SUFFIX,line-scdn.net
+  - DOMAIN-SUFFIX,line.me
+  - DOMAIN-SUFFIX,line.naver.jp
+  - DOMAIN-SUFFIX,linecorp.com
+  - DOMAIN-SUFFIX,linemyshop.com
+  - DOMAIN-SUFFIX,lineshoppingseller.com
+  - DOMAIN-SUFFIX,today-line-me.cdn.ampproject.org
+  - DOMAIN-SUFFIX,line.me
+  - DOMAIN-SUFFIX,line-apps.com
+  - DOMAIN-SUFFIX,line-scdn.net
+  - DOMAIN-SUFFIX,naver.jp
+  - IP-CIDR,103.2.30.0/23 
+  - IP-CIDR,125.209.208.0/20 
+  - IP-CIDR,147.92.128.0/17 
+  - IP-CIDR,203.104.144.0/21 
+  - DST-PORT,10607 
+  - DST-PORT,11729 
+  - DST-PORT,11124 
+  - DST-PORT,14436 
+  - DST-PORT,17028 
+  - DST-PORT,17151 
+  - DST-PORT,20428 
+  - DST-PORT,21041 
+  - DST-PORT,26462 
+  - DST-PORT,26677 

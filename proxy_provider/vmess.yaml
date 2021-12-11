@@ -1,0 +1,34 @@
+proxies:
+- name: "SG-GRPC"
+  type: vmess
+  server: id1.kitu.xyz
+  port: 443
+  uuid: 250df045-c1bb-46d8-91c5-90e16ecf4ae9
+  alterId: 2
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: login5.spotify.com
+  network: grpc
+  grpc-opts:
+    grpc-service-name: v2ray-vmess-grpc
+
+- name: "sshkit"
+  type: vmess
+  server: id-lb.sshkit.org
+  port: 443
+  uuid: 6fea1649-425b-4092-bf53-29792152c925
+  alterId: 2
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: login5.spotify.com
+  network: ws
+  ws-opts:
+   path: /sshkit/bams/61b30e5fa65fa/
+   headers: 
+     Host: login5.spotify.com
+   max-early-data: 2048
+   early-data-header-name: Sec-WebSocket-Protocol

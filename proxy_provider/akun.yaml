@@ -1,0 +1,36 @@
+proxies:
+- name: TROJAN 1
+  type: trojan
+  server: id-atha.bypass.id
+  port: 443
+  password: 4e5ac940-3a4c-11ec-8e95-1577c1651679
+  udp: true
+  sni: login5.spotify.com
+  skip-cert-verify: true
+  
+- name: TROJAN 2
+  type: trojan
+  server: id-biznet.bypass.id
+  port: 443
+  password: ffbbe1c0-0b74-11ec-8f74-1577c1651679
+  udp: true
+  sni: login5.spotify.com
+  skip-cert-verify: true
+  
+- name: TROJAN 3
+  type: trojan
+  server: id-kreatif.bypass.id
+  port: 443
+  password: 4dc25100-565e-11ec-bf09-1577c1651679
+  udp: true
+  sni: login5.spotify.com
+  skip-cert-verify: true
+  
+- name: TROJAN 4
+  type: trojan
+  server: id-awan.bypass.id
+  port: 443
+  password: 8c8d01c0-565e-11ec-a5b7-1577c1651679
+  udp: true
+  sni: login5.spotify.com
+  skip-cert-verify: true

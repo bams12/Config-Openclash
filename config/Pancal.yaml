@@ -1,0 +1,179 @@
+---
+proxy-providers:
+  Game:
+    type: file
+    path: "./proxy_provider/akun.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 123
+  trojan:
+    type: file
+    path: "./proxy_provider/akun.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 123
+  vmess:
+    type: file
+    path: "./proxy_provider/vmess.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 123
+proxy-groups:
+- name: Game
+  type: select
+  disable-udp: false
+  proxies:
+  - DIRECT
+  use:
+  - trojan
+  - vmess
+  url: http://www.gstatic.com/generate_204
+  interval: '100'
+- name: ????????????
+  type: url-test
+  use:
+  - trojan
+  - vmess
+  url: http://www.gstatic.com/generate_204
+  interval: '100'
+- name: load?balance?? 
+  type: load-balance
+  use:
+  - trojan
+  - vmess
+  url: 'http://www.gstatic.com/generate_204'
+  interval: 300
+  strategy: round-robin #consistent-hashing # or round-robin  
+  lazy: true
+   #disable-udp: true
+redir-port: 7892
+port: 7890
+socks-port: 7891
+mixed-port: 7893
+mode: rule
+log-level: silent
+allow-lan: true
+external-controller: 0.0.0.0:9090
+secret: bams
+bind-address: "*"
+external-ui: "/usr/share/openclash/dashboard"
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: redir-host
+  listen: 0.0.0.0:7874
+  fallback-filter:
+    geoip: false
+    ipcidr:
+    - 0.0.0.0/8
+    - 10.0.0.0/8
+    - 100.64.0.0/10
+    - 127.0.0.0/8
+    - 169.254.0.0/16
+    - 172.16.0.0/12
+    - 192.0.0.0/24
+    - 192.0.2.0/24
+    - 192.88.99.0/24
+    - 192.168.0.0/16
+    - 198.18.0.0/15
+    - 198.51.100.0/24
+    - 203.0.113.0/24
+    - 224.0.0.0/4
+    - 240.0.0.0/4
+    - 255.255.255.255/32
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+  - "*.lan"
+  - time.windows.com
+  - time.nist.gov
+  - time.apple.com
+  - time.asia.apple.com
+  - "*.ntp.org.cn"
+  - "*.openwrt.pool.ntp.org"
+  - time1.cloud.tencent.com
+  - time.ustc.edu.cn
+  - pool.ntp.org
+  - ntp.ubuntu.com
+  - ntp.aliyun.com
+  - time1.aliyun.com
+  - "*.time.edu.cn"
+  - time1.apple.com
+  - time1.google.com
+  - "+.pool.ntp.org"
+  - ntp.*.com
+  - time.*.apple.com
+  - "*.home.arpa"
+  - "*.local"
+  - "*.test"
+  - "*.localhost"
+  - "*.invalid"
+  - "*.example"
+  - "*.localdomain"
+  default-nameserver:
+  - 127.0.0.1:5054
+  nameserver:
+  - 127.0.0.1:5054
+  fallback:
+  - https://dns.cloudflare.com/dns-query
+ipv6: true
+profile:
+  store-selected: true
+  store-fakeip: true
+rules:
+
+- RULE-SET,ads,REJECT
+- RULE-SET,Gaming,Game
+- RULE-SET,adaway,REJECT
+- RULE-SET,reject,REJECT
+- RULE-SET,abpindo,REJECT
+- RULE-SET,google-ads,REJECT
+- RULE-SET,Umum,load?balance??
+- RULE-SET,rule_BlockAds,REJECT
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- MATCH,GLOBAL
+rule-providers:
+  Umum:
+    type: file
+    behavior: classical
+    path: "./rule_provider/umum.yaml"
+  Gaming:
+    type: file
+    behavior: classical
+    path: "./rule_provider/gaming.yaml"
+  adaway:
+    type: file
+    behavior: classical
+    path: "./rule_provider/adaway.yaml"
+  ads:
+    type: file
+    behavior: classical
+    path: "./rule_provider/ads.yaml"
+  google-ads:
+    type: file
+    behavior: classical
+    path: "./rule_provider/google_video_ads.yaml"
+  abpindo:
+    type: file
+    behavior: classical
+    path: "./rule_provider/abpindo.yaml"
+  reject:
+    type: http
+    behavior: domain
+    path: "./rule_provider/reject.yaml"
+    interval: 86400
+  rule_BlockAds:
+    type: http
+    behavior: classical
+    path: "./rule_provider/rule_BlockAds.yaml"
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
+    interval: 86400
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+  - tcp://8.8.8.8:53
+  - tcp://8.8.4.4:53
+tproxy-port: 7895
