@@ -15,8 +15,9 @@ dns:
   enhanced-mode: redir-host
   listen: 127.0.0.1:7874
   default-nameserver:
-  - 207.148.120.244
+  - 114.114.114.114
   nameserver:
+  - 114.114.114.114
   - 207.148.120.244
   fallback:
   - https://dns.cloudflare.com/dns-query
