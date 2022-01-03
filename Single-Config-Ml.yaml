@@ -1,3 +1,53 @@
+---
+proxies:
+- name: VMESS-GRPC
+  type: vmess
+  server: vip1.kitu.xyz #isi akun masing"
+  port: 443
+  password: passs #isi pass masing"
+  alterId: 0
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: #isi BUG MU
+  network: grpc
+  grpc-opts:
+    grpc-service-name: v2ray-vmess-grpc
+- name: trojan-goro
+  server: id-kreatif.bypass.id #isi akun masing"
+  port: 443
+  type: trojan
+  password: passs #isi pass masing"
+  network: ws
+  sni:  #isi BUG MU
+  skip-cert-verify: true
+  udp: true
+  ws-opts:
+  path: "/howdy"
+  headers:
+  Host: #isi BUG MU
+- name: trojan-ws-qword #trojan GO
+  server: id-qwords.bypass.id #isi akun masing"
+  port: 443
+  type: trojan
+  password: passs #isi pass masing"
+  network: ws
+  sni:  #isi BUG MU
+  skip-cert-verify: true
+  udp: true
+  ws-opts:
+  path: "/howdy"
+  headers:
+  Host:  #isi BUG MU
+- name: TROJAN 4
+  type: trojan
+  server: id-awan.bypass.id #isi akun masing"
+  port: 443
+  password: passs #isi pass masing"
+  udp: true
+  sni:  #isi BUG MU
+  skip-cert-verify: true
 redir-port: 7892
 tproxy-port: 7895
 port: 7890
@@ -5,135 +55,245 @@ socks-port: 7891
 mixed-port: 7893
 mode: rule
 log-level: silent
-allow-lan: true
 external-controller: 0.0.0.0:9090
+allow-lan: true
 bind-address: "*"
 external-ui: "/usr/share/openclash/dashboard"
 dns:
   enable: true
   ipv6: false
-  enhanced-mode: redir-host
+  enhanced-mode: fake-ip
   listen: 127.0.0.1:7874
-  default-nameserver:
-  - 114.114.114.114
   nameserver:
+  - 192.168.42.129
+  - dhcp://"usb0"
   - 114.114.114.114
-  - 207.148.120.244
+  - 118.189.211.221
+  - 149.112.112.112
+  - 84.200.69.80
+  - 8.20.247.20
+  - 4.2.2.2
+  - 208.67.222.123
+  - 208.67.222.222
   fallback:
-  - https://dns.cloudflare.com/dns-query
+  - https://1.1.1.1/dns-query
   - tls://8.8.8.8:853
-proxies:
-#===========VMESS
-- name: "VMESS-WS"
-  type: vmess
-  server: v2ray.sshanda.com
-  port: 443
-  uuid: xxxx.xxxx.xxxx.xxxx
-  alterId: 64
-  cipher: auto
-  udp: true
-  skip-cert-verify: true
-  tls: true
-  servername: bug.com
-  network: ws
-  ws-path: /v2ray
-  ws-headers:
-    Host: bug.com
-    
-#==========TROJAN
-- name: "TROJAN"
-  type: trojan
-  server: sg2.trojan.bonds.id
-  port: 443
-  password: passakun
-  udp: true
-  sni: bug.com
-  skip-cert-verify: true
-  
-  
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+  - "+.*"
+  default-nameserver:
+  - 192.168.42.129
+  - 114.114.114.114
+  - 118.189.211.221
+  - 149.112.112.112
+  - 84.200.69.80
+  - 8.20.247.20
+  - 4.2.2.2
+  - 208.67.222.123
+  - 208.67.222.222
 proxy-groups:
-  - name: 🚀
-    type: select
-    proxies:
-      - ♻️
-      - VMESS-WS
-      - TROJAN
-  - name: ♻️
-    type: load-balance
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    proxies:
-      - VMESS-WS
-      - TROJAN
-    strategy: round-robin #consistent-hashing # or round-robin
-  - name: 🎯
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀
-      - ♻️
-      
+- name: "\U0001F680"
+  type: select
+  proxies:
+  - "♻️"
+  - "♻️♻️"
+  - trojan-ws-qword
+  - trojan-goro
+  - VMESS-GRPC
+  - TROJAN 4
+- name: "♻️"
+  type: load-balance
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  proxies:
+  - VMESS-GRPC
+  - TROJAN 4
+  - trojan-ws-qword
+  - trojan-goro
+  strategy: round-robin
+- name: "♻️♻️"
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 200
+  proxies:
+  - VMESS-GRPC
+  - TROJAN 4
+  - trojan-ws-qword
+  - trojan-goro
+- name: "\U0001F3AF"
+  type: select
+  proxies:
+  - DIRECT
+  - "\U0001F680"
+  - "♻️♻️"
 rules:
-  - IP-CIDR,10.0.0.0/8,🎯,no-resolvE
-  - IP-CIDR,100.64.0.0/10,🎯,no-resolve
-  - IP-CIDR,127.0.0.0/8,🎯,no-resolve
-  - IP-CIDR,172.16.0.0/12,🎯,no-resolve
-  - IP-CIDR,192.168.0.0/16,🎯,no-resolve
-  - IP-CIDR,198.18.0.0/16,🎯,no-resolve
- #MOBILE LEGENDS
-  #- DOMAIN-SUFFIX,youngjoygame.com
-  - DOMAIN-SUFFIX,mobilelegends.com,🎯
-  - DOMAIN-SUFFIX,app.adjust.net.in,🎯
-  - DOMAIN-SUFFIX,app.adjust.com,🎯
-  - DOMAIN-SUFFIX,app.adjust.world,🎯
-  - DOMAIN-SUFFIX,ml.CS30.NET,🎯
-  - DOMAIN-SUFFIX,pv.sohu.com,🎯
-  - DOMAIN-SUFFIX,yuanzhanapp.com,🎯
-  - DOMAIN-SUFFIX,aihelp.net,🎯
-  #Real-time-battle
-  - DST-PORT,4003,🎯 
-  - DST-PORT,4004,🎯
-  - DST-PORT,4014,🎯 
-  - DST-PORT,5001,🎯 
-  - DST-PORT,5002,🎯 
-  - DST-PORT,5003,🎯 
-  - DST-PORT,5004,🎯 
-  - DST-PORT,5005,🎯 
-  - DST-PORT,5006,🎯 
-  - DST-PORT,5007,🎯 
-  - DST-PORT,5008,🎯 
-  - DST-PORT,5013,🎯 
-  - DST-PORT,5014,🎯 
-  - DST-PORT,5021,🎯 
-  - DST-PORT,5023,🎯 
-  - DST-PORT,5052,🎯 
-  - DST-PORT,5053,🎯 
-  - DST-PORT,5055,🎯 
-  - DST-PORT,10003,🎯 
-  - DST-PORT,30021,🎯 
-  - DST-PORT,30190,🎯 
-  - DST-PORT,30220,🎯 
-  - IP-CIDR,8.214.32.0/24,🎯 
-  - IP-CIDR,23.248.168.0/21,🎯 
-  - IP-CIDR,34.101.143.0/24,🎯 
-  - IP-CIDR,101.78.11.0/24,🎯 
-  - IP-CIDR,103.16.137.0/24,🎯 
-  - IP-CIDR,103.96.77.0/24,🎯 
-  - IP-CIDR,103.104.168.250/24,🎯 
-  - IP-CIDR,103.104.168.0/24,🎯 
-  - IP-CIDR,103.152.14.0/24,🎯 
-  - IP-CIDR,107.155.39.0/24,🎯 
-  - IP-CIDR,119.81.0.0/17,🎯 
-  - IP-CIDR,128.1.87.0/24,🎯 
-  - IP-CIDR,129.227.0.0/16,🎯 
-  - IP-CIDR,159.122.133.0/24,🎯 
-  - IP-CIDR,161.202.192.0/18,🎯 
-  - IP-CIDR,164.52.0.0/17,🎯 
-  - IP-CIDR,168.1.193.0/24,🎯 
-  - IP-CIDR,169.46.132.0/24,🎯 
-  - IP-CIDR,169.56.0.0/16,🎯 
-  - IP-CIDR,185.23.183.0/24,🎯 
-  - IP-CIDR,192.169.113.0/24,🎯 
-  - IP-CIDR,193.118.34.0/24,🎯 
-  - MATCH,🚀
+- "IP-CIDR,198.18.0.1/16,REJECT,no-resolve"
+- "IP-CIDR,10.0.0.0/8,\U0001F3AF,no-resolvE"
+- "IP-CIDR,100.64.0.0/10,\U0001F3AF,no-resolve"
+- "IP-CIDR,127.0.0.0/8,\U0001F3AF,no-resolve"
+- "IP-CIDR,172.16.0.0/12,\U0001F3AF,no-resolve"
+- "IP-CIDR,192.168.0.0/16,\U0001F3AF,no-resolve"
+- "IP-CIDR,198.18.0.0/16,\U0001F3AF,no-resolve"
+- "DOMAIN-SUFFIX,mobilelegends.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,app.adjust.net.in,\U0001F3AF"
+- "DOMAIN-SUFFIX,app.adjust.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,app.adjust.world,\U0001F3AF"
+- "DOMAIN-SUFFIX,ml.CS30.NET,\U0001F3AF"
+- "DOMAIN-SUFFIX,pv.sohu.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,yuanzhanapp.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,aihelp.net,\U0001F3AF"
+
+# WHATSAPP
+- "DOMAIN-SUFFIX,g.whatsapp.net,\U0001F3AF"
+- "DOMAIN-SUFFIX,web.whatsapp.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,scontent.whatsapp.net,\U0001F3AF"
+- "DOMAIN-SUFFIX,whatsapp.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,static.whatsapp.net,\U0001F3AF"
+- "DOMAIN-SUFFIX,whatsapp.net,\U0001F3AF"
+- "DOMAIN-SUFFIX,m.me,\U0001F3AF"
+- "DOMAIN-SUFFIX,oculus.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,oculuscdn.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,rocksdb.org,\U0001F3AF"
+#> BLEACH
+- "DOMAIN-SUFFIX,efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,wildcard.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,images.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,efunelk.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,itforum.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,tools.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,mail.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,open.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,sdk.download.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,mw.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,e.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,ssl.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,armoredgodios.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,trialoffateios.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,yhxy.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,xfz.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,pf.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,exchange.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,games-api.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,developers.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,checknet.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,ad.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,dash.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,pftest.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,distribute.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,download.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,ptpay.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,login.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,secondage.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,center.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,asgyx.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,learning.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,log.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,media.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,sdk.downloadth.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,assist.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,data-query.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,efunmail.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,fb.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,push.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,imgi.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,smtp.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,miragememorial.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,pay.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,ptlogin.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,loginjp.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,fe-activity.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,sdk-download.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,doc.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,efe-activity.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,20.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,pic.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,manager.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,www.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,activity.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,armoredgod.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,talesoferin.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,talesoferinios.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,game.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,kr.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,aizbops.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,trialoffate.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,mgr-permission.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,miragememorialios.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,huodong.efun.com,\U0001F3AF"
+- "DOMAIN-SUFFIX,ssen-asia-gs.efunen.com,\U0001F3AF"
+- "IP-CIDR,52.53.74.206/32,\U0001F3AF"
+- "IP-CIDR,119.29.61.126/32,\U0001F3AF"
+- "IP-CIDR,150.158.238.93/32,\U0001F3AF"
+- "IP-CIDR,52.74.95.142/32,\U0001F3AF"
+- "IP-CIDR,211.72.207.13/32,\U0001F3AF"
+- "IP-CIDR,164.52.70.217/32,\U0001F3AF"
+- "IP-CIDR,13.227.166.122/32,\U0001F3AF"
+- "IP-CIDR,211.72.207.11/32,\U0001F3AF"
+- "IP-CIDR,23.52.171.128/32,\U0001F3AF"
+- "IP-CIDR,159.138.238.168/32,\U0001F3AF"
+- "IP-CIDR,124.156.135.167/32,\U0001F3AF"
+- "IP-CIDR,104.18.26.215/32,\U0001F3AF"
+- "IP-CIDR,23.52.171.131/32,\U0001F3AF"
+- "IP-CIDR,47.91.174.220/32,\U0001F3AF"
+#dst
+- "DST-PORT,4003,\U0001F3AF"
+- "DST-PORT,4004,\U0001F3AF"
+- "DST-PORT,4014,\U0001F3AF"
+- "DST-PORT,5001,\U0001F3AF"
+- "DST-PORT,5002,\U0001F3AF"
+- "DST-PORT,5003,\U0001F3AF"
+- "DST-PORT,5004,\U0001F3AF"
+- "DST-PORT,5005,\U0001F3AF"
+- "DST-PORT,5006,\U0001F3AF"
+- "DST-PORT,5007,\U0001F3AF"
+- "DST-PORT,5008,\U0001F3AF"
+- "DST-PORT,5013,\U0001F3AF"
+- "DST-PORT,5014,\U0001F3AF"
+- "DST-PORT,5021,\U0001F3AF"
+- "DST-PORT,5023,\U0001F3AF"
+- "DST-PORT,5052,\U0001F3AF"
+- "DST-PORT,5053,\U0001F3AF"
+- "DST-PORT,5055,\U0001F3AF"
+- "DST-PORT,10003,\U0001F3AF"
+- "DST-PORT,30021,\U0001F3AF"
+- "DST-PORT,30190,\U0001F3AF"
+- "DST-PORT,30220,\U0001F3AF"
+#ipcdr
+- "IP-CIDR,8.214.32.0/24,\U0001F3AF"
+- "IP-CIDR,23.248.168.0/21,\U0001F3AF"
+- "IP-CIDR,34.101.143.0/24,\U0001F3AF"
+- "IP-CIDR,101.78.11.0/24,\U0001F3AF"
+- "IP-CIDR,103.16.137.0/24,\U0001F3AF"
+- "IP-CIDR,103.96.77.0/24,\U0001F3AF"
+- "IP-CIDR,103.104.168.250/24,\U0001F3AF"
+- "IP-CIDR,103.104.168.0/24,\U0001F3AF"
+- "IP-CIDR,103.152.14.0/24,\U0001F3AF"
+- "IP-CIDR,107.155.39.0/24,\U0001F3AF"
+- "IP-CIDR,119.81.0.0/17,\U0001F3AF"
+- "IP-CIDR,128.1.87.0/24,\U0001F3AF"
+- "IP-CIDR,129.227.0.0/16,\U0001F3AF"
+- "IP-CIDR,159.122.133.0/24,\U0001F3AF"
+- "IP-CIDR,161.202.192.0/18,\U0001F3AF"
+- "IP-CIDR,164.52.0.0/17,\U0001F3AF"
+- "IP-CIDR,168.1.193.0/24,\U0001F3AF"
+- "IP-CIDR,169.46.132.0/24,\U0001F3AF"
+- "IP-CIDR,169.56.0.0/16,\U0001F3AF"
+- "IP-CIDR,185.23.183.0/24,\U0001F3AF"
+- "IP-CIDR,192.169.113.0/24,\U0001F3AF"
+- "IP-CIDR,193.118.34.0/24,\U0001F3AF"
+- "MATCH,\U0001F680"
+secret: '123'
+ipv6: false
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+  - tcp://8.8.8.8:53
+  - tcp://8.8.4.4:53
+profile:
+  store-selected: true
+  store-fake-ip: true
+##BAMSRE##
