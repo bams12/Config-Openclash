@@ -4,7 +4,7 @@ proxies:
   type: vmess
   server: vip1.kitu.xyz #isi akun masing"
   port: 443
-  password: passs #isi pass masing"
+  uuid: passs #isi pass masing"
   alterId: 0
   cipher: auto
   udp: true
